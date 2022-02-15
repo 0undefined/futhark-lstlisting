@@ -1,0 +1,59 @@
+\lstdefinelanguage{futhark}{%
+  sensitive=true,
+  alsoletter={<>|\%~:-/!=&.\#},%
+  % Comments
+  comment=[l]{--},
+  % Array functions
+  keywords=[0]{%
+    let, def, entry, in, type, match, case, loop, for, do, while
+  },
+  keywords=[1]{%
+    length, null, head, last, tail, init, take, drop, split, reverse, ++,
+    concat, concat, concat_to, rotate, iota, indices, replicate, copy, flatten,
+    flatten_to, flatten_3d, flatten_4d, unflatten, undflatten_3d, unflatten_4d,
+    transpose, and, or, foldl, foldr, tabulate, tabulate_2d, tabulate_3d,
+  },
+  % Functional combinators
+  keywords=[2]{%
+    |>, <|, >->, <-<, flip, curry, uncurry, const, id, iterate,
+    iterate_until, iterate_while
+  },
+  % SOACS
+  keywords=[3]{%
+    map, map1, map2, map3, map4, map5, reduce, reduce_comm, reduce_by_index,
+    reduce_by_index_2d, reduce_by_index_3d, scan, filter, partition, partition2,
+    reduce_stream, reduce_stream_per, map_stream, map_stream_per, all, any,
+    scatter, scatter_2d, scatter_3d
+  },
+  % Math
+  keywords=[4]{%
+    % Numeric
+    +, -, *, /, {\%}, **, to_i64, &= , <, >, <=, >=, !=, neg, max, min, abs,
+    sgn, highest, lowest, sum, product, maximum, minimum,
+    % Integral
+    //, \%\%, &, |, ^, not, <<, >>, >>>, num_bits, get_bit, set_bit, popc,
+    mul_hi, mad_hi, clz, ctz,
+    % real
+    recip, from_fraction, to_i64, to_f64, sqrt, exp, sin, coz, tan, asin, acos,
+    atan, sinh, cosh, tanh, asinh, acosh, atanh, atan2, hypot, gamma, lgamma,
+    lerp, log, log2, log10, ceil, floor, trunc, mad, fma, round, isinf, isnan,
+    inf, nan, pi, e,
+    % Floats
+    from_bits, to_bits, num_bits, get_bit, set_bit, epsilon
+  },
+  keywords=[5]{%
+    zip, zip2, zip3, zip4, zip5, unzip, unzip2, unzip3, unzip4, unzip5
+  },
+  % Types
+  keywords=[6]{%
+    i8, i16, i32, i64, u8, u16, u32, u64, f16, f32, f64, bool
+  },
+  % Conversions
+  keywords=[7]{%
+    r32, t32, r64, t64, not, opaque, trace, break
+  },
+  % Delims
+  keywords=[8]{%
+    ->
+  },
+}
