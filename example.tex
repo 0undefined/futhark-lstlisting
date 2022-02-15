@@ -1,0 +1,35 @@
+\documentclass{article}
+\usepackage{listings}
+
+\usepackage{futhark}
+\usepackage{style}
+\lstset{language=futhark,style=futhark}
+
+\begin{document}
+Simple futhark program that retuns the maximum difference of pairwise elements
+in two arrays.
+\begin{lstlisting}
+let abs (a:i32) (b:i32) =
+  let min = i32.min a b in
+  i32.abs((i32.abs min + a) - (i32.abs min + b))
+
+let process [n] (a: [n]i32) (b: [n]i32): i32 =
+  if n == 0 then
+    0
+  else
+    let m = map2 (abs) a b in
+    reduce i32.max 0 m
+
+-- Return the maximum difference aswell as the index
+let process_idx [n] (a: [n]i32) (b: [n]i32): (i32,i32) =
+  if n == 0 then
+    (0,0)
+  else
+    let m = map2 (abs) a b in
+    let max = reduce i32.max 0 m in
+    ((filter (\x -> x == max) m)[0], max)
+
+entry main [n] (a: [n]i32) (b: [n]i32): i32 =
+  process a b
+\end{lstlisting}
+\end{document}
